@@ -1,0 +1,121 @@
+﻿<Window x:Class="Task_ManagerCP3.TaskEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task_ManagerCP3"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="TaskEditorWindow" 
+         Height="500" 
+         Width="570"
+         AllowsTransparency="True"
+         Background="Transparent"
+         WindowStyle="None"
+         ResizeMode="NoResize"
+         WindowStartupLocation="CenterScreen"
+         MouseDown="Window_OnMouseDown">
+    <Border CornerRadius="10"
+    BorderThickness="2"
+    BorderBrush="#abc3e2"
+    Background="#313345">
+        <Grid Margin="10">
+
+            <StackPanel Orientation="Vertical" Margin="0,0,278,367">
+                <TextBlock Text="Введите название" FontSize="22" Foreground="White"/>
+                <TextBox x:Name="titleTextBox" FontSize="18" MaxLength="50" Width="264" HorizontalAlignment="Left"  Height="30"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="275,0,0,367">
+                <TextBlock Text="Выберите статус" FontSize="22" Foreground="White" />
+                <ComboBox x:Name="statusComboBox" FontSize="18" Width="272" HorizontalAlignment="Left" Height="30" SelectedValuePath="Content" SelectedIndex="0">
+                    <ComboBoxItem Content="Планируется"/>
+                    <ComboBoxItem Content="Выполняется"/>
+                    <ComboBoxItem Content="Завершено"/>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="0,61,278,265">
+                <TextBlock Text="Введите заметку" FontSize="22" Foreground="White"/>
+                <TextBox x:Name="notesTextBox" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" FontSize="18" Width="264" Height="67" MaxLength="1000" HorizontalAlignment="Left"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="275,61,0,270">
+                <TextBlock Text="Выберите тег" FontSize="22" Foreground="White"/>
+                <xctk:CheckComboBox x:Name="tagsCheckComboBox"
+               HorizontalAlignment="Left" 
+               Width="240"
+               MinHeight="30"
+               Height="Auto"
+               ValueMemberPath="ID"
+               ItemSelectionChanged="TagsCheckComboBox_ItemSelectionChanged">
+                    <xctk:CheckComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{Binding Color}" Margin="1" Padding="2" CornerRadius="2">
+                                <TextBlock Text="{Binding Title}" 
+                      Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" 
+                      VerticalAlignment="Center" />
+                            </Border>
+                        </DataTemplate>
+                    </xctk:CheckComboBox.ItemTemplate>
+                </xctk:CheckComboBox>
+            </StackPanel>
+            <Button x:Name="btnAddTag" Content="+" Width="30" Height="30" Margin="518,90,-2,356" FontSize="18" RenderTransformOrigin="0.317,0.55" Click="AddTag_Click" />
+
+
+
+            <StackPanel Orientation="Vertical" Margin="174,163,174,198">
+                <TextBlock Text="Введите дату" FontSize="22" Foreground="White" HorizontalAlignment="Center" />
+                <xctk:DateTimePicker x:Name="datePicker" Format="LongDate" FormatString="yyyy-dd-MM HH:mm" TimePickerVisibility="Visible" FontSize="18" Width="200" Height="30" HorizontalAlignment="Center" />
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="0,230,335,137">
+                <CheckBox x:Name="reminderCheckBox" Content="Напоминание" Foreground="White" FontSize="22" IsChecked="False" Style="{StaticResource CircularCheckBox}"/>
+                <xctk:TimePicker x:Name="reminderTimePicker" FormatString="HH:mm" FontSize="18" Width="210" Height="30" HorizontalAlignment="Left" Value="00:00"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="338,230,0,95">
+                <CheckBox x:Name="repeatCheckBox" Content="Повтор" Foreground="White" FontSize="22" IsChecked="False" Style="{StaticResource CircularCheckBox}"/>
+                <ComboBox x:Name="repeatComboBox" FontSize="18" Width="210" Height="30" HorizontalAlignment="Left" SelectedIndex="0">
+                    <ComboBoxItem Content="Ежедневно"/>
+                    <ComboBoxItem Content="Еженедельно"/>
+                    <ComboBoxItem Content="Дата"/>
+                </ComboBox>
+                <xctk:DateTimePicker x:Name="repeatDatePicker" Format="LongDate" FormatString="yyyy-dd-MM HH:mm" TimePickerVisibility="Hidden" FontSize="18" Width="210" Height="30" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+            </StackPanel>
+
+            <Button x:Name="btnSaveTask"
+           Width="200"
+           Height="40"
+           Content="Сохранить"
+           FontSize="20"
+           Background="#21817A"
+           Foreground="White" 
+           Margin="174,410,172,26" 
+           Click="SaveTask_Click" />
+
+            <TextBlock 
+           x:Name="btnCancelProject"
+           Text="Отменить"
+           Foreground="White"
+           FontSize="13"
+           TextDecorations="Underline"
+           Cursor="Hand"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Top"
+           MouseLeftButtonDown="CancelTask_MouseLeftButtonDown" Margin="0,456,0,0"/>
+            <Button x:Name="btnRemoveTask"
+             Height="40"
+             Content="Удалить"
+             FontSize="20"
+             Background="#D94044"
+             Foreground="White" 
+             Margin="429,436,-2,0" 
+             Click="RemoveTask_Click" />
+            <StackPanel Orientation="Vertical" Margin="0,297,335,115" >
+                <TextBlock FontSize="22" Foreground="White"  Text="Список" Height="30"/>
+                <ComboBox x:Name="listComboBox" FontSize="18" Height="30" SelectionChanged="ListComboBox_SelectionChanged"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

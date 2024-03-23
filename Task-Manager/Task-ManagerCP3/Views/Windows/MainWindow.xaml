@@ -1,0 +1,160 @@
+﻿<Window x:Class="Task_ManagerCP3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:Task_ManagerCP3"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="600"
+        Width="1200"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_OnMouseDown"
+        Loaded="Notifications_Loaded">
+
+    <Border CornerRadius="10"
+            BorderThickness="2"
+            BorderBrush="#abc3e2">
+        <Border.Background>
+            <SolidColorBrush Color="#313345" />
+        </Border.Background>
+
+        <Grid>
+            <Frame x:Name="MainFrame"
+                   NavigationUIVisibility="Hidden"
+                   HorizontalAlignment="Left"
+                   Background="Transparent" 
+                   Margin="175,0,0,0" />
+            <Border Background="#1E2124"
+                    BorderBrush="#abc3e2"
+                    BorderThickness="2,0,0,2" 
+                    CornerRadius="0,10,0,10"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Right">
+                    <Button Content="—"
+                            Foreground="White"
+                            Width="25"
+                            Height="25"
+                            Margin="5,5,5,5"
+                            Click="MiniTray_Click"/>
+                    <Button Content="X"
+                            Foreground="White"
+                            Width="25"
+                            Height="25"
+                            Margin="0,5,5,5"
+                            Click="Exit_Click"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="#787891"
+                    BorderBrush="#abc3e2"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    BorderThickness="0,0,2,0"
+                    CornerRadius="10,0,0,0"
+                    Height="60"
+                    Width="175">
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left">
+                    <Image x:Name="logo_pfp"
+                           Height="50"
+                           Width="50"
+                           Margin="5"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left" 
+                           Stretch="Fill"/>
+                    <TextBlock x:Name="logo_username"
+                               Width="105"
+                               FontSize="22"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               Text="12345678"
+                               TextAlignment="Center"
+                               TextTrimming="CharacterEllipsis"
+                               Margin="5,5,0,0" />
+                </StackPanel>
+            </Border>
+
+            <Border Background="#232332"
+                    BorderBrush="#abc3e2"
+                    BorderThickness="0,0,2,0"
+                    CornerRadius="0,0,0,10"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Height="538"
+                    Width="175"
+                    Margin="0,60,0,0">
+                <StackPanel VerticalAlignment="Top"
+                            HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconModern Kind="Home" 
+                                          VerticalAlignment="Center" 
+                                          Foreground="#abc3e2"
+                                          Width="25" 
+                                          Height="25"
+                                          Margin="5,10,0,5" />
+                        <TextBlock x:Name="btnDashboard"
+                                   Text="Дашборд"
+                                   Foreground="White"
+                                   FontSize="22"
+                                   Margin="10,10,0,5"
+                                   MouseEnter="Dashboard_MouseEnter"
+                                   MouseLeave="Dashboard_MouseLeave"
+                                   MouseLeftButtonDown="Dashboard_MouseLeftButtonDown"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconModern Kind="Settings" 
+                                          VerticalAlignment="Center" 
+                                          Foreground="#abc3e2"
+                                          Width="25"
+                                          Height="25"
+                                          Margin="5,10,0,5" />
+                        <TextBlock x:Name="btnSettings"
+                               Text="Настройки"
+                               Foreground="White"
+                               FontSize="22"
+                               Margin="10,10,0,5" 
+                               MouseLeftButtonDown="Settings_MouseLeftButtonDown"
+                               MouseEnter="Settings_MouseEnter"
+                               MouseLeave="Settings_MouseLeave"/>
+                    </StackPanel>
+                    <Border Width="175"
+                            Height="4"
+                            Background="#abc3e2"/>
+                    <TextBlock Text="Проекты"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               FontSize="22"/>        
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                                  Grid.Row="1" 
+                                  Height="399" 
+                                  Width="175"
+                                  Margin="0,10,0,0" >
+                        <ScrollViewer.Resources>
+                            <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource CustomVerticalScrollBar}">
+                            </Style>
+                        </ScrollViewer.Resources>
+                        <StackPanel x:Name="ProjectPanel" VerticalAlignment="Top">
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+            </Border>
+            <TextBlock x:Name="logo_time"
+                        Width="105"
+                        FontSize="18"
+                        Foreground="#abc3e2"
+                        FontWeight="Bold"
+                        TextAlignment="Center"
+                        Margin="65,30,1028,538" />
+        </Grid>
+    </Border>
+</Window>

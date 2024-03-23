@@ -1,0 +1,120 @@
+﻿<Page x:Class="Task_ManagerCP3.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Task_ManagerCP3"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      mc:Ignorable="d" 
+      d:DesignHeight="230" d:DesignWidth="300"
+      Title="LoginPage"
+      Loaded="UserInfo_Loaded">
+
+    <StackPanel>
+        <StackPanel x:Name="LoginPanel"
+                    Margin="0,30,0,0">
+            <StackPanel Orientation="Horizontal" Width="255">
+                <TextBox x:Name="LoginBox"
+                         FontFamily="Helvetica"
+                         FontWeight="Light"
+                         FontSize="16"
+                         Foreground="White"
+                         Background="Transparent"
+                         BorderThickness="0"
+                         Width="253"
+                         Height="25"
+                         TextAlignment="Left"
+                         Opacity="0.8"
+                         Style="{StaticResource WaterMarkStyleText}"
+                         Tag="Логин" 
+                         LostFocus="LoginBox_LostFocus"
+                         TextChanged="LoginBox_TextChanged"/>
+                <iconPacks:PackIconMaterial Kind="Account"
+                                            VerticalAlignment="Bottom"
+                                            HorizontalAlignment="Center"
+                                            Foreground="White"
+                                            Margin="-15,0,0,5" />
+            </StackPanel>
+
+            <Border Width="255"
+                    Height="2"
+                    Background="#abc3e2" />
+
+            <StackPanel Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="69*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="61*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="PassHint"
+                               FontFamily="Helvetica"
+                               FontWeight="Light"
+                               FontSize="16"
+                               Text="Пароль"
+                               HorizontalAlignment="Left"
+                               Foreground="White"
+                               Background="Transparent"
+                               Width="224"
+                               Height="20"
+                               Opacity="0.4"
+                               Margin="26,15,0,0" Grid.ColumnSpan="3" />
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Grid.ColumnSpan="3">
+                        <PasswordBox x:Name="PassBox"
+                                     FontFamily="Helvetica"
+                                     FontWeight="Light"
+                                     FontSize="16"
+                                     Foreground="White"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Width="240"
+                                     Height="25"
+                                     HorizontalContentAlignment="Left"
+                                     Opacity="0.8"
+                                     Margin="20,0,0,0" 
+                                     PasswordChanged="PassBox_PasswordChanged"
+                                     LostFocus="PassBox_LostFocus"/>
+                        <iconPacks:PackIconMaterial Kind="FormTextboxPassword"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center"
+                                                    Foreground="White" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+            <Border Width="255"
+                    Height="2"
+                    Background="#abc3e2" />
+
+            <CheckBox x:Name="cbRememberUserData"
+                      Content="Запомнить?"
+                      Foreground="White"
+                      Margin="0,20,0,0"
+                      FontSize="13"
+                      HorizontalAlignment="Center"
+                      Style="{StaticResource CircularCheckBox}"/>
+
+            <Button x:Name="btnLogin"
+                    Width="200"
+                    Height="40"
+                    Content="Войти"
+                    HorizontalAlignment="Center"
+                    Background="#3E7DCC"
+                    Foreground="White"
+                    FontSize="20"
+                    BorderBrush="#3064A8"
+                    Margin="0,20,0,0" 
+                    Click="Auth_Click"/>
+
+            <TextBlock x:Name="btnRegisterRedirect"
+                       Text="Нет аккаунта? Зарегистрироваться"
+                       Foreground="White"
+                       TextDecorations="Underline"
+                       Cursor=""
+                       HorizontalAlignment="Center"
+                       Margin="0,10,0,0" 
+                       FontSize="13"
+                       MouseLeftButtonDown="RegisterRedirect_MouseLeftButtonDown"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

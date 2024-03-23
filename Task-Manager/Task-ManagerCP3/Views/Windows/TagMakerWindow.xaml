@@ -1,0 +1,87 @@
+﻿<Window x:Class="Task_ManagerCP3.TagMakerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:Task_ManagerCP3"
+        mc:Ignorable="d"
+        Title="TagMakerWindow" Height="231" Width="309"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_OnMouseDown">
+    <Border CornerRadius="10"
+     BorderThickness="2"
+     BorderBrush="#abc3e2"
+     Background="#1E2124">
+        <Grid>
+            <TextBlock 
+                FontSize="21"
+                Foreground="White"
+                FontWeight="Bold"
+                
+                Text="Введите название тега"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="0,10,0,0"/>
+
+            <TextBox x:Name="inputTagName"
+                 FontSize="21"
+                 Foreground="Black"
+                 Height="30"
+                 MaxLength="20" Margin="10,43,11,156" 
+                 TextChanged="InputTagName_TextChanged"/>
+
+            <xctk:ColorPicker 
+                Name="colorPickerTag" 
+                FontSize="21"
+                SelectedColorChanged="ColorPicker_SelectedColorChanged"
+                Height="30"
+                Margin="10,91,11,108" 
+/>
+
+            <Button x:Name="btnSaveTag" 
+             Width="150"
+             Height="40"
+             FontSize="20"
+             Content="Сохранить"
+             Background="#21817A"
+             Foreground="White"
+             Margin="78,138,77,49" RenderTransformOrigin="0.464,-0.362" Click="SaveTag_Click"/>
+
+            <Button x:Name="btnRemoveTag"
+                     Height="40"
+                     Content="Удалить"
+                     FontSize="20"
+                     Background="#D94044"
+                     Foreground="White" 
+                     Margin="206,178,10,9" 
+                     Click="RemoveTag_Click" RenderTransformOrigin="0.5,0.5" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+
+            <TextBlock
+                x:Name="btnCancelTag"
+                Text="Отменить"
+                Foreground="White"
+                FontSize="13"
+                Width="60"
+                Height="18"
+                TextDecorations="Underline"
+                Cursor="Hand"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                MouseLeftButtonDown="CancelTag_MouseLeftButtonDown" Margin="0,185,0,0" RenderTransformOrigin="0.133,0.5"/>
+        </Grid>
+    </Border>
+</Window>
